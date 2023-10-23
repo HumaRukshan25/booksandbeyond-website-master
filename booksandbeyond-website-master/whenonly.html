@@ -1,0 +1,113 @@
+﻿<html>
+ <head>
+ <title>WHEN ONLY LOVE REMAINS</title>
+
+<style>
+img.displayed {
+    display: block;
+    margin-left: auto;
+    margin-right: 100}
+img {
+    float: right;
+    margin: 0 0 10px 10px;
+}
+a {
+    color: white;
+}
+a:hover, a:active,button:hover{
+    background-color: green;
+}
+.button{
+    background-color: Black;
+    border: 1px solid white;
+    border-radius: 3px 3px 3px 3px;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+</style>
+
+
+<script>
+function write_review(f1)
+{
+	
+
+		<?php
+		session_start();
+		$rev = $_POST["review"];
+		$bookname = "whenonlyloveremains";
+		if($rev!=NULL)
+		{
+			$conn = mysqli_connect("localhost","root","","bb");
+			$id = $_SESSION["uname"];
+			$query = "insert into login_activity(userid,book_name,review,likes) values ('$id','$bookname','$rev',0)";
+			$auto_id = mysqli_insert_id();
+			if(mysqli_query($conn,$query))
+			{
+				echo "Review successfully submitted";
+				header('Location: readreview20.php');  
+			}
+		}
+		else
+		{
+			echo "Enter Review";
+		}
+			
+		?>
+}</script><script>
+function goBack() {
+    window.history.back();
+}
+</script>
+</head>
+
+<body background=bg0.jpg>
+
+
+	<font color=WHITE>
+	<h1 style="font-family:Times New Roman ;font size:24px"><center>BOOKS & BEYOND</center></h1>
+	<h3><center>REDEFINING READING</center></h3>
+<hr>
+<h1> <center>WHEN ONLY LOVE REMAINS </center></h1>
+<h2> <center> DURJOY DATTA </center></h2>
+<p>
+
+<img class="displayed" src="whenonly.jpg" style=width:"10px" height:"10px";> 
+
+<h3 align=left>
+I've imagined this in my head so many times.<br> I've always thought about what I would say;<br> What I would do and how it would all turn out to be.<br> And every time I would remove some detail...<br><br>
+
+She's a flight attendant—young, bright and living her dream.<br> He's a heartbroken singer on his way to becoming big.<br>
+
+She's an ardent fan of his.<br> He can't imagine why and yet seems to find comfort in her words.<br>
+
+It's the first time they are together and in their hearts both are wishing,<br> hoping and praying that the night would never end.<br> That the time they are spending together lasts and lasts...<br><br>
+
+In the world of imperfection, there is always someone just right for you.<br><br>
+<b><font color=yellow>BOOK DETAILS:</font></b> <br>
+Original Title: When Only Love Remains <br>
+ISBN: 139780143422648 <br>
+Edition Language: English <br><br>
+
+<b><font color=yellow>DOWNLOAD THE FREE PDF HERE!</font><b> <br>
+<a href="whenonly.pdf">When Only Love Remains=Durjoy Datta.pdf</a> <br> <br>
+
+</h3><br><br>
+<b><font color=yellow>READER REVIEWS</font></b><br>
+<form method=post name=f2 onsubmit="return write_review(this)">
+Write Review:<br>
+<textarea name="review"></textarea><br>
+<input type="submit" class="button" value="Submit">
+
+ <input type="button" class="button" onclick="location.href = 'readreview20.php';" value="Read  Review">
+</form>
+<BR><BR>
+<button class="button" onclick="goBack()">Back</button> </font>
+</body>
+</html>

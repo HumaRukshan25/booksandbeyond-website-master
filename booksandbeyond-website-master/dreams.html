@@ -1,0 +1,114 @@
+﻿<html>
+ <head>
+ <title>YOUR DREAMS ARE MINE NOW</title>
+
+<style>
+img.displayed {
+    display: block;
+    margin-left: auto;
+    margin-right: 100}
+img {
+    float: right;
+    margin: 0 0 10px 10px;
+}
+a { color: WHITE;}
+
+a:hover, a:active,button:hover{
+    background-color: green;
+}
+.button {
+    background-color: Black;
+    border: 1px solid white;
+    border-radius: 3px 3px 3px 3px;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+</style>
+
+<script>
+function write_review(f1)
+{
+	
+
+		<?php
+		session_start();
+		$rev = $_POST["review"];
+		$bookname = "yourdreamsareminenow";
+		if($rev!=NULL)
+		{
+			$conn = mysqli_connect("localhost","root","","bb");
+			$id = $_SESSION["uname"];
+			$query = "insert into login_activity(userid,book_name,review,likes) values ('$id','$bookname','$rev',0)";
+			$auto_id = mysqli_insert_id();
+			if(mysqli_query($conn,$query))
+			{
+				echo "Review successfully submitted";
+				header('Location: readreview16.php');  
+			}
+		}
+		else
+		{
+			echo "Enter Review";
+		}
+			
+		?>
+}</script>
+
+<script>
+function goBack() {
+    window.history.back();
+}
+</script>
+</head>
+
+<body background=bg0.jpg>
+
+
+	<font color=WHITE>
+	<h1 style="font-family:Times New Roman ;font size:24px"><center>BOOKS & BEYOND</center></h1>
+	<h3><center>REDEFINING READING</center></h3>
+<hr>
+<h1> <center>YOUR DREAMS ARE MINE NOW </center></h1>
+<h2> <center> RAVINDER SINGH</center></h2>
+<p>
+
+<img class="displayed" src="dreams.jpg" style=width:"10px" height:"10px";> 
+
+<h3 align=left>
+It cant be love . . . he thinks and immediately his heart protests.<br> 
+They are complete opposites!<br><br>
+She’s a small town girl who takes admission in Delhi University (DU).<br> An idealist, studies are her first priority.<br><br>
+He’s a Delhi guy, seriously into youth politics in the DU.<br> He fights to make his way. <br>Student union elections are his first priority.<br><br>
+But then opposites attract as well!<br><br>
+A scandal on campus brings them together, they begin to walk the same path and somewhere along, fall in love . . .<br>
+But their fight against evil comes at a heavy price,<br> which becomes the ultimate test of their lives.<br><br> 
+Against the backdrop of dominant campus politics,<br> Your Dreams Are Mine Now is an innocent love story <br>that is bound to evoke strong emotions in your heart.<br><br>
+<b><font color=yellow>BOOK DETAILS:</font></b> <br>
+Original Title: Your Dreams Are Mine Now<br>
+ISBN: 0143423002 (ISBN13: 9780143423003)<br>
+Edition Language: English<br><br>
+
+</h3><br><br>
+<b><font color=yellow>DOWNLOAD THE FREE PDF HERE!</font><b> <br>
+<a href="dreams.pdf">Your Dreams Are Mine Now-Ravinder Singh.pdf</a> <br> <br>
+
+<b><font color=yellow>READER REVIEWS</font></b><br>
+<form method=post name=f2 onsubmit="return write_review(this)">
+Write Review:<br>
+<textarea name="review"></textarea><br>
+<input type="submit" class="button" value="Submit">
+
+ <input type="button" class="button" onclick="location.href = 'readreview16.php';" value="Read  Review">
+</form>
+</h3><BR><BR>
+
+
+<button class="button" onclick="goBack()">Back</button></font>
+</body>
+</html>

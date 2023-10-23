@@ -1,0 +1,109 @@
+<html>
+ <head>
+ <title>FRANKENSTEIN</title>
+
+<style>
+img.displayed {
+    display: block;
+    margin-left: auto;
+    margin-right: 100}
+img {
+    float: right;
+    margin: 0 0 10px 10px;
+}
+a { color: WHITE;}
+a:hover, a:active,button:hover{
+    background-color: green;
+}
+.button {
+    background-color: Black;
+    border: 1px solid white;
+    border-radius: 3px 3px 3px 3px;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+</style>
+
+
+<script>
+function write_review(f1)
+{
+	
+
+		<?php
+		session_start();
+		$rev = $_POST["review"];
+		$bookname = "frankenstein";
+		if($rev!=NULL)
+		{
+			$conn = mysqli_connect("localhost","root","","bb");
+			$id = $_SESSION["uname"];
+			$query = "insert into login_activity(userid,book_name,review,likes) values ('$id','$bookname','$rev',0)";
+			$auto_id = mysqli_insert_id();
+			if(mysqli_query($conn,$query))
+			{
+				echo "Review successfully submitted";
+				header('Location: readreview17.php');  
+			}
+		}
+		else
+		{
+			echo "Enter Review";
+		}
+			
+		?>
+}</script><script>
+function goBack() {
+    window.history.back();
+}
+</script>
+</head>
+
+<body background=bg0.jpg>
+
+
+	<font color=WHITE>
+	<h1 style="font-family:Times New Roman ;font size:24px"><center>BOOKS & BEYOND</center></h1>
+	<h3><center>REDEFINING READING</center></h3>
+<hr>
+<h1> <center>FRANKENSTEIN </center></h1>
+<h2> <center> MARY SHELLEY </center></h2>
+<p>
+
+<img class="displayed" src="frank.jpg" style=width:"10px" height:"10px";> 
+
+<h3 align=left>
+Mary Shelley began writing Frankenstein when she was only eighteen.<br> At once a Gothic thriller, a passionate romance, and a cautionary tale about the dangers of science,<br> Frankenstein tells the story of committed science student Victor Frankenstein.<br><br> Obsessed with discovering the cause of generation and life and bestowing animation<br> upon lifeless matter, Frankenstein assembles a human being from stolen body parts but;<br> upon bringing it to life, he recoils in horror at the creature's hideousness.<br><br> Tormented by isolation and loneliness, the once-innocent creature turns to evil and <br>unleashes a campaign of murderous revenge against his creator, Frankenstein.<br><br>
+
+Frankenstein, an instant bestseller and an important ancestor of both <br>the horror and science fiction genres, not only tells a terrifying story, but also raises profound,<br> disturbing questions about the very nature of life and the place of humankind within the cosmos:<br> What does it mean to be human?<br> What responsibilities do we have to each other?<br> How far can we go in tampering with Nature? <br>In our age, filled with news of organ donation genetic engineering,<br> and bio-terrorism, these questions are more relevant than ever. <br><br>
+<b><font color=yellow>BOOK DETAILS:</font></b> <br>
+Original Title:Frankenstein: or, The Modern Prometheus<br>
+ISBN: 0141439475 (ISBN13: 9780141439471)<br>
+Edition Language:English<br>
+Characters:Victor Frankenstein, Elizabeth Lavenza, William Frankenstein, Robert Walton, Henry Clerval<br> 
+Setting:Geneva (Switzerland) <br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Ingolstadt (Germany)<br> 
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Orkney Islands,<br>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Scotland (United Kingdom)<br> 
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Ireland <br><br>
+<b><font color=yellow>DOWNLOAD THE FREE PDF HERE!</font><b> <br>
+<a href="frank.pdf">Frankenstein-Mary Shelley.pdf</a> <br> <br>
+<b><font color=yellow>READER REVIEWS</font></b><br>
+<form method=post name=f2 onsubmit="return write_review(this)">
+Write Review:<br>
+<textarea name="review"></textarea><br>
+<input type="submit" class="button" value="Submit">
+
+ <input type="button" class="button" onclick="location.href = 'readreview17.php';" value="Read  Review">
+</form>
+</h3><BR><BR>
+</h3><br><br>
+<button class="button" onclick="goBack()">Back</button></font>
+</body>
+</html>

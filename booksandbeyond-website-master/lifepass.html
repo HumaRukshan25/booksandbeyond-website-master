@@ -1,0 +1,109 @@
+﻿<html>
+ <head>
+ <title>YOU'RE THE PASSWORD TO MY LIFE</title>
+
+<style>
+img.displayed {
+    display: block;
+    margin-left: auto;
+    margin-right: 100}
+img {
+    float: right;
+    margin: 0 0 10px 10px;
+}
+a {
+    color: YELLOW;
+}a:hover, a:active,button:hover{
+    background-color: green;
+}
+.button {
+    background-color: Black;
+    border: 1px solid white;
+    border-radius: 3px 3px 3px 3px;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+</style>
+<script>
+function write_review(f1)
+{
+	
+
+		<?php
+		session_start();
+		$rev = $_POST["review"];
+		$bookname = "wax";
+		if($rev!=NULL)
+		{
+			$conn = mysqli_connect("localhost","root","","bb");
+			$id = $_SESSION["uname"];
+			$query = "insert into login_activity(userid,book_name,review,likes) values ('$id','$bookname','$rev',0)";
+			$auto_id = mysqli_insert_id();
+			if(mysqli_query($conn,$query))
+			{
+				echo "Review successfully submitted";
+				header('Location: readreview27.php');  
+			}
+		}
+		else
+		{
+			echo "Enter Review";
+		}
+			
+		?>
+}</script>
+
+<script>
+function goBack() {
+    window.history.back();
+}
+</script>
+</head>
+
+<body background=bg0.jpg>
+
+
+	<font color=WHITE>
+	<h1 style="font-family:Times New Roman ;font size:24px"><center>BOOKS & BEYOND</center></h1>
+	<h3><center>REDEFINING READING</center></h3>
+<hr>
+<h1> <center>YOU'RE THE PASSWORD TO MY LIFE</center></h1>
+<h2> <center>SUDEEP NAGARKAR </center></h2>
+<p>
+
+<img class="displayed" src="lifepass.jpg" style=width:"10px" height:"10px";> 
+
+<h3 align=left>
+We all have that one person in our lives<br> in whose absence our existence seems meaningless!<br><br>
+
+Virat and Kavya are like chalk and cheese.<br> While Virat is cautious and reserved, Kavya is outgoing and likes to lead a life full of reckless fun. <br>In spite of their differences, they are thick friends and not even Mahek,<br> the love of Virat's life, can come in the way of that.<br> 
+
+But, as happens in every relationship, their friendship is put to the test<br> when an unforeseen incident hits them all of a sudden.<br> Can Aditya, along with his cousin, come to their rescue yet again?<br>
+<br>
+You're the Password to My Life is a true story that shows you<br> how friendship is the only 'ship' that does not sink.<br><br>
+<b>BOOK DETAILS:</b> <br>
+Original Title: You’re the Password to My Life<br>
+ASIN: B00P0QCQXS<br>
+Edition Language: English<br><br>
+
+<b><font color=yellow>DOWNLOAD THE FREE PDF HERE!</font><b> <br>
+<a href="lifepass.pdf">You Are The Password To My Life-Sudeep Nagarkar.pdf</a> <br> <br>
+
+<b><font color=yellow>READER REVIEWS</font></b><br>
+<form method=post name=f2 onsubmit="return write_review(this)">
+Write Review:<br>
+<textarea name="review"></textarea><br>
+<input type="submit" class="button" value="Submit">
+
+ <input type="button" class="button" onclick="location.href = 'readreview27.php';" value="Read  Review">
+</form>v
+</h3><br><br>
+<button class="button" onclick="goBack()">Back</button>
+</body>
+</html>

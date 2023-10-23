@@ -1,0 +1,6 @@
+ib {
+    border: 1px solid black;
+    outline-color:BLACK;
+}
+
+ib.dashed {outline-style: dashed;}

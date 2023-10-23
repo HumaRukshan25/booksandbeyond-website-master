@@ -1,0 +1,89 @@
+.container1 {
+    position: relative;
+}
+
+.topright1 {
+    position: absolute;
+   top: 98px;
+    right: 90px;
+    text-align: center;
+    font-size: 25px;
+    color: red;
+}
+
+.container2 {
+    position: relative;
+}
+
+.topright2 {
+    position: absolute;
+   top: 98px;
+    right: 90px;
+    text-align: center;
+    font-size: 25px;
+    color: red;
+}
+
+.container3 {
+    position: relative;
+}
+
+.topright3 {
+    position: absolute;
+   top: 98px;
+    right: 90px;
+    text-align: center;
+    font-size: 25px;
+    color: red;
+}
+
+.container4 {
+    position: relative;
+}
+
+.topright4 {
+    position: absolute;
+   top: 138px;
+    right: 90px;
+    text-align: center;
+    font-size: 25px;
+    color: black;
+}
+
+.container5 {
+    position: relative;
+}
+
+.topright5 {
+    position: absolute;
+   top: 138px;
+    right: 90px;
+    text-align: center;
+    font-size: 25px;
+    color: black;
+}
+.container6 {
+    position: relative;
+}
+
+.topright6 {
+    position: absolute;
+   top: 138px;
+    right: 90px;
+    text-align: center;
+    font-size: 25px;
+    color: black;
+}
+
+.container7 {
+    position: relative;
+}
+
+.topright7 {
+    position: absolute;
+   top:168px;
+    right: 180px;
+    text-align: center;
+    font-size: 25px;
+    color: black;
+}

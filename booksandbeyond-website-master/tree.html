@@ -1,0 +1,111 @@
+﻿<html>
+ <head>
+ <title>THE SHATTERED TREE</title>
+
+<style>
+img.displayed {
+    display: block;
+    margin-left: auto;
+    margin-right: 100}
+img {
+    float: right;
+    margin: 0 0 10px 10px;
+}
+a {
+    color: YELLOW;
+}
+.button{
+    background-color: Black;
+    border: 1px solid white;
+    border-radius: 3px 3px 3px 3px;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+</style>
+<script>
+function write_review(f1)
+{
+	
+
+		<?php
+		session_start();
+		$rev = $_POST["review"];
+		$bookname = "thetree";
+		if($rev!=NULL)
+		{
+			$conn = mysqli_connect("localhost","root","","bb");
+			$id = $_SESSION["uname"];
+			$query = "insert into login_activity(userid,book_name,review,likes) values ('$id','$bookname','$rev',0)";
+			$auto_id = mysqli_insert_id();
+			if(mysqli_query($conn,$query))
+			{
+				echo "Review successfully submitted";
+				header('Location: readreview25.php');  
+			}
+		}
+		else
+		{
+			echo "Enter Review";
+		}
+			
+		?>
+}</script>
+
+
+<script>
+function goBack() {
+    window.history.back();
+}
+</script>
+</head>
+
+<body background=bg0.jpg>
+
+
+	<font color=WHITE>
+	<h1 style="font-family:Times New Roman ;font size:24px"><center>BOOKS & BEYOND</center></h1>
+	<h3><center>REDEFINING READING</center></h3>
+<hr>
+<h1> <center>THE SHATTERED TREE</center></h1>
+<h2> <center> CHARLES TODD </center></h2>
+<p>
+
+<img class="displayed" src="tree.jpg" style=width:"10px" height:"10px";> 
+
+<h3 align=left>
+World War I battlefield nurse Bess Crawford goes to dangerous lengths to investigate<br> a wounded soldier's background and uncover his true loyalties<br>in this thrilling and atmospheric entry in the bestselling<br>"vivid period mystery series" (New York Times Book Review).<br>
+
+At the foot of a tree shattered by shelling and gunfire,<br> stretcher-bearers find an exhausted officer, shivering with cold and a loss of blood<br> from several wounds. The soldier is brought to battlefield nurse Bess Crawford's aid station,<br> where she stabilizes him and treats his injuries before he is sent<br> to a rear hospital. The odd thing is, the officer isn't British--he's French. <br>But in a moment of anger and stress, he shouts at Bess in German.<br> 
+
+When Bess reports the incident to Matron, her superior offers a ready explanation.<br> The soldier is from Alsace-Lorraine, a province in the west<br> where the tenuous border between France and Germany has continually shifted through history,<br> most recently in the Franco-Prussian War of 1870, won by the Germans.<br> But is the wounded man Alsatian?<br><br> And if he is, on which side of the war do his sympathies really lie?<br>
+
+Of course, Matron could be right, but Bess remains uneasy—and unconvinced.<br> If he were a French soldier, what was he doing so far from his own lines . . .<br> and so close to where the Germans are putting up a fierce, last-ditch fight?<br><br> 
+
+When the French officer disappears in Paris, it's up to <br>Bess—a soldier's daughter as well as a nurse—<br>to find out why, even at the risk of her own life. <br><br>
+
+<b><font color=yellow>BOOK DETAILS:</font></b><br>
+ISBN: 0062386271 (ISBN13: 9780062386274)<br>
+Series: Bess Crawford #8<br><br>
+
+<b><font color=yellow>DOWNLOAD THE FREE PDF HERE!</font><b> <br>
+<a href="holdmyhand.pdf">Hold My Hand- Durjoy Datta.pdf</a> <br> <br>
+
+<b><font color=yellow>READER REVIEWS</font></b><br>
+<form method=post name=f2 onsubmit="return write_review(this)">
+Write Review:<br>
+<textarea name="review"></textarea><br>
+<input type="submit" class="button" value="Submit">
+
+ <input type="button" class="button" onclick="location.href = 'readreview25.php';" value="Read  Review">
+</form>
+</h3><BR><BR>
+</h3><BR><BR>
+<button class="button" onclick="goBack()">Back</button>
+</body>
+</html>

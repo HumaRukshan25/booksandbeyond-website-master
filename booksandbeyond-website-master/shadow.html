@@ -1,0 +1,113 @@
+<html>
+ <head>
+ <title>THE GATHERING</title>
+
+<style>
+img.displayed {
+    display: block;
+    margin-left: auto;
+    margin-right: 100}
+img {
+    float: right;
+    margin: 0 0 10px 10px;
+}
+a {
+    color: YELLOW;
+}
+.button{
+    background-color: Black;
+    border: 1px solid white;
+    border-radius: 3px 3px 3px 3px;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+</style>
+<script>
+function write_review(f1)
+{
+	
+
+		<?php
+		session_start();
+		$rev = $_POST["review"];
+		$bookname = "shadowhouse";
+		if($rev!=NULL)
+		{
+			$conn = mysqli_connect("localhost","root","","bb");
+			$id = $_SESSION["uname"];
+			$query = "insert into login_activity(userid,book_name,review,likes) values ('$id','$bookname','$rev',0)";
+			$auto_id = mysqli_insert_id();
+			if(mysqli_query($conn,$query))
+			{
+				echo "Review successfully submitted";
+				header('Location: readreview23.php');  
+			}
+		}
+		else
+		{
+			echo "Enter Review";
+		}
+			
+		?>
+}</script>
+
+<script>
+function goBack() {
+    window.history.back();
+}
+</script>
+</head>
+
+<body background=bg0.jpg>
+
+
+	<font color=WHITE>
+	<h1 style="font-family:Times New Roman ;font size:24px"><center>BOOKS & BEYOND</center></h1>
+	<h3><center>REDEFINING READING</center></h3>
+<hr>
+<h1> <center>THE GATHERING </center></h1>
+<h2> <center> DAN POBLOCKI </center></h2>
+<p>
+
+<img class="displayed" src="shadow.jpg" style=width:"10px" height:"10px";> 
+
+<h3 align=left>
+You don't just read this ghost story. You step into it. Some houses are more than just haunted... they're hungry.
+
+Dash, Dylan, Poppy, Marcus, and Azumi don't know this at first. They each think they've been summoned to Shadow House for innocent reasons. But there's nothing innocent about Shadow House.
+
+Something within its walls is wickedly wrong.  Nothing -- and nobody -- can be trusted. Hallways move. Doors vanish. Ghosts appear. Children disappear.
+
+And the way out?
+
+That's disappeared, too...
+
+Enter Shadow House... if you dare.
+
+<b><font color=yellow>BOOK DETAILS:</font></b> <br>
+ISBN 0545925509 (ISBN13: 9780545925501)
+Edition LanguageEnglish
+SeriesShadow House #1
+
+</h3><BR><BR>
+<b><font color=yellow>DOWNLOAD THE FREE PDF HERE!</font><b> <br>
+<a href="holdmyhand.pdf">Hold My Hand- Durjoy Datta.pdf</a> <br> <br>
+
+<b><font color=yellow>READER REVIEWS</font></b><br>
+<form method=post name=f2 onsubmit="return write_review(this)">
+Write Review:<br>
+<textarea name="review"></textarea><br>
+<input type="submit" class="button" value="Submit">
+
+ <input type="button" class="button" onclick="location.href = 'readreview23.php';" value="Read  Review">
+</form>
+</h3><BR><BR>
+<button class="button" onclick="goBack()">Back</button>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<html>
+ <head>
+ <title>THE ONE YOU CANNOT HAVE</title>
+
+<style>
+img.displayed {
+    display: block;
+    margin-left: auto;
+    margin-right: 100}
+img {
+    float: right;
+    margin: 0 0 10px 10px;
+}
+a { color: WHITE;}
+a:hover, a:active,button:hover{
+    background-color: green;
+}
+.button {
+    background-color: Black;
+    border: 1px solid white;
+    border-radius: 3px 3px 3px 3px;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+</style>
+
+
+<script>
+function write_review(f1)
+{
+	
+
+		<?php
+		session_start();
+		$rev = $_POST["review"];
+		$bookname = "theoneyoucannothave";
+		if($rev!=NULL)
+		{
+			$conn = mysqli_connect("localhost","root","","bb");
+			$id = $_SESSION["uname"];
+			$query = "insert into login_activity(userid,book_name,review,likes) values ('$id','$bookname','$rev',0)";
+			$auto_id = mysqli_insert_id();
+			if(mysqli_query($conn,$query))
+			{
+				echo "Review successfully submitted";
+				header('Location: readreview15.php');  
+			}
+		}
+		else
+		{
+			echo "Enter Review";
+		}
+			
+		?>
+}</script>
+
+<script>
+function goBack() {
+    window.history.back();
+}
+</script>
+</head>
+
+<body background=bg0.jpg>
+
+
+	<font color=WHITE>
+	<h1 style="font-family:Times New Roman ;font size:24px"><center>BOOKS & BEYOND</center></h1>
+	<h3><center>REDEFINING READING</center></h3>
+<hr>
+<h1> <center>THE ONE YOU CANNOT HAVE </center></h1>
+<h2> <center> PREETI SHENOY </center></h2>
+<p>
+
+<img class="displayed" src="cannothave.jpg" style=width:"10px" height:"10px";> 
+
+<h3 align=left>
+How long does it take to heal a broken heart?<br> Can you ever forget that one perfect relationship you had? <br>Anjali knows who she wants, she wants Aman. <br>Aman too knows who he wants, he wants Shruti.<br> Shruti and Aman were once inseparable.<br> Theirs was a love that would last forever and more.<br> Then, out of the blue, Shruti left Aman.<br> A devastated Aman moved abroad in the hope of forgetting Shruti and to heal.<br> Shruti married Rishabh.<br><br> Now Aman is back in India and looking for a fresh start.<br> But he is still haunted by memories of his love.<br> Can he ever break free from it?<br> His head tells him to move on, to find love with Anjali, but his heart wont listen.<br> No matter what he does, Shruti's shadow looms large.<br>Can there be a happily-ever-after for any of them?<br><br> A straight-from-the-heart modern-day romance of unrequited love,<br> of complicated relationships and about moving on<br> when you realise that there will always be the one you cannot have.<br><br> 
+
+<b><font color=yellow>BOOK DETAILS:</font></b> <br>
+Original Title: The One You Cannot Have<br>
+ISBN: 9383260688 (ISBN13: 9789383260683)<br>
+Edition Language: English<br><br>
+
+</h3><br><br>
+
+<b><font color=yellow>DOWNLOAD THE FREE PDF HERE!</font><b> <br>
+<a href="cannothave.pdf">The One You Cannot Have-Preeti Shenoy.pdf</a> <br> <br>
+<b><font color=yellow>READER REVIEWS</font></b><br>
+<form method=post name=f2 onsubmit="return write_review(this)">
+Write Review:<br>
+<textarea name="review"></textarea><br>
+<input type="submit" class="button" value="Submit">
+
+ <input type="button" class="button" onclick="location.href = 'readreview15.php';" value="Read  Review">
+</form>
+</h3><BR><BR>
+
+
+
+
+<button class="button" onclick="goBack()">Back</button></font>
+</body>
+</html>

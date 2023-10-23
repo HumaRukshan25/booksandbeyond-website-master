@@ -1,0 +1,106 @@
+<html>
+ <head>
+ <title>WAX</title>
+
+<style>
+img.displayed {
+    display: block;
+    margin-left: auto;
+    margin-right: 100}
+img {
+    float: right;
+    margin: 0 0 10px 10px;
+}
+a {
+    color: YELLOW;
+}
+.button{
+    background-color: Black;
+    border: 1px solid white;
+    border-radius: 3px 3px 3px 3px;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+</style>
+
+<script>
+function write_review(f1)
+{
+	
+
+		<?php
+		session_start();
+		$rev = $_POST["review"];
+		$bookname = "wax";
+		if($rev!=NULL)
+		{
+			$conn = mysqli_connect("localhost","root","","bb");
+			$id = $_SESSION["uname"];
+			$query = "insert into login_activity(userid,book_name,review,likes) values ('$id','$bookname','$rev',0)";
+			$auto_id = mysqli_insert_id();
+			if(mysqli_query($conn,$query))
+			{
+				echo "Review successfully submitted";
+				header('Location: readreview26.php');  
+			}
+		}
+		else
+		{
+			echo "Enter Review";
+		}
+			
+		?>
+}</script>
+
+
+<script>
+function goBack() {
+    window.history.back();
+}
+</script>
+</head>
+
+<body background=bg0.jpg>
+
+
+	<font color=WHITE>
+	<h1 style="font-family:Times New Roman ;font size:24px"><center>BOOKS & BEYOND</center></h1>
+	<h3><center>REDEFINING READING</center></h3>
+<hr>
+<h1> <center>WAX </center></h1>
+<h2> <center>GINA DAMICO </center></h2>
+<p>
+
+<img class="displayed" src="wax.jpg" style=width:"10px" height:"10px";> 
+
+<h3 align=left>
+Paraffin, Vermont, is known the world over as home to the Grosholtz Candle Factory.<br> But behind the sunny retail space bursting with overwhelming scents and homemade fudge,<br> seventeen year old Poppy Palladino discovers something dark and unsettling:<br> a back room filled with dozens of startlingly life like wax sculptures,<br> crafted by one very strange old lady. Poppy hightails it home,<br> only to be shocked when one of the figures a teenage boy<br> who doesn't seem to know what he is jumps naked and screaming out of the trunk<br> of her car. She tries to return him to the candle factory,<br> but before she can, a fire destroys the mysterious workshop<br>and the old woman is nowhere to be seen.<br>
+
+With the help of the wax boy, who answers to the name Dud, Poppy resolves<br> to find out who was behind the fire. But in the course of her investigation,<br> she discovers that things in Paraffin aren't always as they seem,<br> that the Grosholtz Candle Factory isn't as pure as its reputation<br>and that some of the towns people she's known her entire life<br> may not be as human as they once were. In fact, they're starting<br> to look a little . . . waxy.<br> Can Poppy and Dud extinguish the evil that's taking hold of their town before it's too late?<br>
+<br>
+<b><font color=yellow>BOOK DETAILS:</font></b> <br>
+Original Title:Wax<br>
+ISBN: 0544633156 (ISBN13: 9780544633155)<br>
+Edition Language:English<br><br>
+<b><font color=yellow>DOWNLOAD THE FREE PDF HERE!</font><b> <br>
+<a href="holdmyhand.pdf">Hold My Hand- Durjoy Datta.pdf</a> <br> <br>
+
+<b><font color=yellow>READER REVIEWS</font></b><br>
+<form method=post name=f2 onsubmit="return write_review(this)">
+Write Review:<br>
+<textarea name="review"></textarea><br>
+<input type="submit" class="button" value="Submit">
+
+ <input type="button" class="button" onclick="location.href = 'readreview26.php';" value="Read  Review">
+</form>
+</h3><BR><BR>
+
+<button class="button" onclick="goBack()">Back</button>
+</body>
+</html>
